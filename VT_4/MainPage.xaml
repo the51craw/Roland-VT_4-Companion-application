@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="VT_4.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VT_4"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Black">
+
+    <Grid x:Name = "gridMain" >
+        <Image x:Name = "imgButtonBackground" Source = "ms-appx:///Images/ButtonBackground.png" Stretch = "None" />
+        <Image x:Name = "imgNumberButtonBackground" Source = "ms-appx:///Images/NumberButtonBackground.png" Stretch = "None" />
+        <Image x:Name = "imgBypassOn" Source = "ms-appx:///Images/BypassOn.png" Stretch = "None" />
+        <Image x:Name = "imgOneOn" Source = "ms-appx:///Images/OneOn.png" Stretch = "None" />
+        <Image x:Name = "imgEightOn" Source = "ms-appx:///Images/EightOn.png" Stretch = "None" />
+        <Image x:Name = "imgFiveOn" Source = "ms-appx:///Images/FiveOn.png" Stretch = "None" />
+        <Image x:Name = "imgFourOn" Source = "ms-appx:///Images/FourOn.png" Stretch = "None" />
+        <Image x:Name = "imgHarmonyOn" Source = "ms-appx:///Images/HarmonyOn.png" Stretch = "None" />
+        <Image x:Name = "imgLargeKnob" Source = "ms-appx:///Images/LargeKnob.png" Stretch = "None" />
+        <Image x:Name = "imgManualOn" Source = "ms-appx:///Images/ManualOn.png" Stretch = "None" />
+        <Image x:Name = "imgMegaphoneOn" Source = "ms-appx:///Images/MegaphoneOn.png" Stretch = "None" />
+        <Image x:Name = "imgMenuBackground" Source = "ms-appx:///Images/MenuBackground.png" Stretch = "None" />
+        <Image x:Name = "imgMenuItemSliderHandle" Source = "ms-appx:///Images/MenuItemSliderHandle.png" Stretch = "None" />
+        <Image x:Name = "imgReverbOn" Source = "ms-appx:///Images/ReverbOn.png" Stretch = "None" />
+        <Image x:Name = "imgRobotOn" Source = "ms-appx:///Images/RobotOn.png" Stretch = "None" />
+        <Image x:Name = "imgRolandLogo" Source = "ms-appx:///Images/RolandLogo.png" Stretch = "None" />
+        <Image x:Name = "imgSevenOn" Source = "ms-appx:///Images/SevenOn.png" Stretch = "None" />
+        <Image x:Name = "imgSixOn" Source = "ms-appx:///Images/SixOn.png" Stretch = "None" />
+        <Image x:Name = "imgSliderHandle" Source = "ms-appx:///Images/SliderHandle.png" Stretch = "None" />
+        <Image x:Name = "imgSmallKnob" Source = "ms-appx:///Images/SmallKnob.png" Stretch = "None" />
+        <Image x:Name = "imgKeyKnob" Source = "ms-appx:///Images/KeyKnob.png" Stretch = "None" />
+        <Image x:Name = "imgThreeOn" Source = "ms-appx:///Images/ThreeOn.png" Stretch = "None" />
+        <Image x:Name = "imgTwoOn" Source = "ms-appx:///Images/TwoOn.png" Stretch = "None" />
+        <Image x:Name = "imgVocoderOn" Source = "ms-appx:///Images/VocoderOn.png" Stretch = "None" />
+        <Image x:Name = "imgVT_4_Logo" Source = "ms-appx:///Images/VT_4_Logo.png" Stretch = "None" />
+        <Image x:Name = "imgBackground" Source = "ms-appx:///Images/Background.png" Stretch = "Uniform" />
+        <Grid x:Name = "gridControls" SizeChanged = "gridControls_SizeChanged" />
+        <Image x:Name = "imgClickArea" Source = "ms-appx:///Images/Background.png" Stretch = "None" Opacity = "0"
+				PointerMoved = "imgClickArea_PointerMoved"
+				ImageOpened = "imgClickArea_ImageOpened"
+				PointerWheelChanged = "imgClickArea_PointerWheelChanged"
+				PointerReleased = "imgClickArea_PointerReleased"
+				PointerPressed = "imgClickArea_PointerPressed" />
+    </Grid >
+</Page>
