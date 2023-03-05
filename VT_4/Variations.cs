@@ -47,6 +47,7 @@ namespace VT_4
 
             // Vocoder
             ParameterList.Add(new Parameter(0x60, new object[] {
+                new string[] { "Vintage", "Advanced", "Talk box", "Spell toy" },
                 255, 255, 255, 255 }));
 
             // Harmony
@@ -61,11 +62,12 @@ namespace VT_4
 
             // Megaphone
             ParameterList.Add(new Parameter(0x40, new object[] { 
-                new string[] { "FB off", "FB on" },
+                new string[] { "Megaphon", "Radio", "BbdChors", "Strobo" },
                 255, 255, 255, 255 }));
 
             // Reverb
-            ParameterList.Add(new Parameter(0x50, new object[] { 
+            ParameterList.Add(new Parameter(0x50, new object[] {
+                new string[] { "Reverb", "Echo", "Delay", "Dub echo", "Deep reverb", "VT reverb" },
                 255, 255, 255, 255 }));
 
             // Patch
@@ -87,9 +89,6 @@ namespace VT_4
         {
             public int Id;
             public List<object> Parameters;
-            //public int ItemNumber;
-            //public NumericParameter NumericParameter;
-            //public TextParameter TextParameter;
 
             public Parameter(int id, object[] parameters)
             {
@@ -99,16 +98,6 @@ namespace VT_4
                 {
                     Parameters.Add(param);
                 }
-                //ItemNumber = item;
-                //NumericParameter = new NumericParameter(maxValue);
-                //if (strings == null)
-                //{
-                //    TextParameter = null;
-                //}
-                //else
-                //{
-                //    TextParameter = new TextParameter(strings);
-                //}
             }
         }
 

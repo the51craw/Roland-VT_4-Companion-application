@@ -22,10 +22,11 @@ namespace VT_4
 
         public void SetVocoderControlValues()
         {
-            pmbVocoder.Children[1][0].Value = VT4.TemporaryVocoder.VOCODER_PARAMETER_1;
-            pmbVocoder.Children[1][1].Value = VT4.TemporaryVocoder.VOCODER_PARAMETER_2;
-            pmbVocoder.Children[1][2].Value = VT4.TemporaryVocoder.VOCODER_PARAMETER_3;
-            pmbVocoder.Children[1][3].Value = VT4.TemporaryVocoder.VOCODER_PARAMETER_4;
+            pmbVocoder.Children[1][0].Value = VT4.TemporaryVocoder.VOCODER_TYPE;
+            pmbVocoder.Children[1][1].Value = VT4.TemporaryVocoder.VOCODER_PARAMETER_1;
+            pmbVocoder.Children[1][2].Value = VT4.TemporaryVocoder.VOCODER_PARAMETER_2;
+            pmbVocoder.Children[1][3].Value = VT4.TemporaryVocoder.VOCODER_PARAMETER_3;
+            pmbVocoder.Children[1][4].Value = VT4.TemporaryVocoder.VOCODER_PARAMETER_4;
         }
 
         public void SetHarmonyControlValues()
@@ -51,18 +52,20 @@ namespace VT_4
 
         public void SetMegaphoneControlValues()
         {
-            pmbMegaphone.Children[1][0].Value = VT4.TemporaryMegaphone.MEGAPHONE_PARAMETER_2;
-            pmbMegaphone.Children[1][1].Value = VT4.TemporaryMegaphone.MEGAPHONE_PARAMETER_3;
+            pmbMegaphone.Children[1][0].Value = VT4.TemporaryMegaphone.MEGAPHONE_TYPE;
+            pmbMegaphone.Children[1][1].Value = VT4.TemporaryMegaphone.MEGAPHONE_PARAMETER_1;
             pmbMegaphone.Children[1][2].Value = VT4.TemporaryMegaphone.MEGAPHONE_PARAMETER_4;
-            pmbMegaphone.Children[1][3].Value = VT4.TemporaryMegaphone.MEGAPHONE_PARAMETER_4;
+            pmbMegaphone.Children[1][3].Value = VT4.TemporaryMegaphone.MEGAPHONE_PARAMETER_3;
+            pmbMegaphone.Children[1][4].Value = VT4.TemporaryMegaphone.MEGAPHONE_PARAMETER_4;
         }
 
         public void SetReverbControlValues()
         {
-            pmbReverb.Children[1][0].Value = VT4.TemporaryReverb.REVERB_PARAMETER_1;
-            pmbReverb.Children[1][1].Value = VT4.TemporaryReverb.REVERB_PARAMETER_2;
-            pmbReverb.Children[1][2].Value = VT4.TemporaryReverb.REVERB_PARAMETER_3;
-            pmbReverb.Children[1][3].Value = VT4.TemporaryReverb.REVERB_PARAMETER_4;
+            pmbReverb.Children[1][0].Value = VT4.TemporaryReverb.REVERB_TYPE;
+            pmbReverb.Children[1][1].Value = VT4.TemporaryReverb.REVERB_PARAMETER_1;
+            pmbReverb.Children[1][2].Value = VT4.TemporaryReverb.REVERB_PARAMETER_2;
+            pmbReverb.Children[1][3].Value = VT4.TemporaryReverb.REVERB_PARAMETER_3;
+            pmbReverb.Children[1][4].Value = VT4.TemporaryReverb.REVERB_PARAMETER_4;
         }
 
         public void SetEqualizerControlValues()

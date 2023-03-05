@@ -91,6 +91,8 @@ namespace VT_4
             SetParameterTexts(0x0b);
             SetParameterTexts(0x0c);
 
+            midi.SendControlChange(midi.PortPairs[0], 51, 0);
+
 
             // Megaphone sometimes has only three parameters. When calling
             // SetParameterTexts(0x0b) the extra one might be set to visible,
@@ -637,8 +639,8 @@ namespace VT_4
                     while (timerAction.Count > 0)
                     {
                         // Skip intermidate messages of the same type:
-                        while (timerAction.Count > 1 
-                            && (timerAction[0].EventData == null 
+                        while (timerAction.Count > 1
+                            && (timerAction[0].EventData == null
                                 || (timerAction[0].EventData != null && timerAction[1].EventData != null
                                     && timerAction[0].EventData[0] == timerAction[1].EventData[1])))
                         {
@@ -647,89 +649,8 @@ namespace VT_4
                         switch (timerAction[0].EventType)
                         {
                             case TimerAction.WAIT_FOR_INITIALIZATION_DONE:
-                                //InitTextBlocks(imgClickArea.ActualWidth);
                                 CopyVT4ToPopupMenus();
-                                // HBE
-                                //for (int setting = 0; setting < vt4MenuItems[0][1].Count; setting++)
-                                //{
-                                //    vt4MenuItems[0][1][setting].SetPositionFromValue();
-                                //}
-                                //for (int setting = 0; setting < vt4MenuItems[1][1].Count; setting++)
-                                //{
-                                //    vt4MenuItems[1][1][setting].SetPositionFromValue();
-                                //}
-                                //for (int setting = 0; setting < vt4MenuItems[8][1].Count; setting++)
-                                //{
-                                //    vt4MenuItems[8][1][setting].SetPositionFromValue();
-                                //}
-                                //for (int setting = 0; setting < vt4MenuItems[9][1].Count; setting++)
-                                //{
-                                //    vt4MenuItems[9][1][setting].SetPositionFromValue();
-                                //}
-                                //for (int setting = 0; setting < vt4MenuItems[7][1].Count; setting++)
-                                //{
-                                //    vt4MenuItems[7][1][setting].SetPositionFromValue();
-                                //}
                                 UpdateGui();
-                                //for (byte i = 0; i < 8; i++)
-                                //{
-                                //    if (VT4.TemporaryPatch.IsSameAs(VT4.UserPatch[i]))
-                                //    {
-                                //        switch (i)
-                                //        {
-                                //            case 0:
-                                //                imgOneOn.Visibility = Visibility.Visible;
-                                //                imgManualOn.Visibility = Visibility.Collapsed;
-                                //                manualOn = false;
-                                //                PatchIndex = i;
-                                //                break;
-                                //            case 1:
-                                //                imgTwoOn.Visibility = Visibility.Visible;
-                                //                imgManualOn.Visibility = Visibility.Collapsed;
-                                //                manualOn = false;
-                                //                PatchIndex = i;
-                                //                break;
-                                //            case 2:
-                                //                imgThreeOn.Visibility = Visibility.Visible;
-                                //                imgManualOn.Visibility = Visibility.Collapsed;
-                                //                manualOn = false;
-                                //                PatchIndex = i;
-                                //                break;
-                                //            case 3:
-                                //                imgFourOn.Visibility = Visibility.Visible;
-                                //                imgManualOn.Visibility = Visibility.Collapsed;
-                                //                manualOn = false;
-                                //                PatchIndex = i;
-                                //                break;
-                                //            case 4:
-                                //                imgFiveOn.Visibility = Visibility.Visible;
-                                //                imgManualOn.Visibility = Visibility.Collapsed;
-                                //                manualOn = false;
-                                //                PatchIndex = i;
-                                //                break;
-                                //            case 5:
-                                //                imgSixOn.Visibility = Visibility.Visible;
-                                //                imgManualOn.Visibility = Visibility.Collapsed;
-                                //                manualOn = false;
-                                //                PatchIndex = i;
-                                //                break;
-                                //            case 6:
-                                //                imgSevenOn.Visibility = Visibility.Visible;
-                                //                imgManualOn.Visibility = Visibility.Collapsed;
-                                //                manualOn = false;
-                                //                PatchIndex = i;
-                                //                break;
-                                //            case 7:
-                                //                imgEightOn.Visibility = Visibility.Visible;
-                                //                imgManualOn.Visibility = Visibility.Collapsed;
-                                //                manualOn = false;
-                                //                PatchIndex = i;
-                                //                break;
-                                //        }
-                                //        break;
-                                //    }
-                                //}
-                                //EventTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
                                 initDone = true;
                                 break;
                             case TimerAction.HANDLE_EFFECT_BUTTON_PRESS:
@@ -756,28 +677,28 @@ namespace VT_4
                             case TimerAction.HANDLE_REVERB_VARIATION_CHANGE:
                                 SetVariation(timerAction[0].EventData[1] - 1, Area.REVERB);
                                 break;
-                                //switch (ChangingVariationFor)
-                                //{
-                                //    case 0x31:
-                                //        SetVariation(ChangingVariationNumber, Area.ROBOT);
-                                //        break;
-                                //    case 0x32:
-                                //        SetVariation(ChangingVariationNumber, Area.MEGAPHONE);
-                                //        break;
-                                //    case 0x33:
-                                //        SetVariation(ChangingVariationNumber, Area.REVERB);
-                                //        break;
-                                //    case 0x34:
-                                //        SetVariation(ChangingVariationNumber, Area.VOCODER);
-                                //        break;
-                                //    case 0x35:
-                                //        SetVariation(ChangingVariationNumber, Area.HARMONY);
-                                //        break;
-                                //}
-                                //ChangingVariationFor = -1;
-                                //break;
+                            //switch (ChangingVariationFor)
+                            //{
+                            //    case 0x31:
+                            //        SetVariation(ChangingVariationNumber, Area.ROBOT);
+                            //        break;
+                            //    case 0x32:
+                            //        SetVariation(ChangingVariationNumber, Area.MEGAPHONE);
+                            //        break;
+                            //    case 0x33:
+                            //        SetVariation(ChangingVariationNumber, Area.REVERB);
+                            //        break;
+                            //    case 0x34:
+                            //        SetVariation(ChangingVariationNumber, Area.VOCODER);
+                            //        break;
+                            //    case 0x35:
+                            //        SetVariation(ChangingVariationNumber, Area.HARMONY);
+                            //        break;
+                            //}
+                            //ChangingVariationFor = -1;
+                            //break;
                             case TimerAction.SELECT_TEMPORARY_PATCH:
-                                sceneIndex =  -1;
+                                sceneIndex = -1;
                                 currentArea = Area.MANUAL;
                                 //CurrentPatch = VT4.TemporaryPatch;
                                 blinking = false;
@@ -786,60 +707,38 @@ namespace VT_4
                                 manualBlinkCounter = 40;
                                 ReleaseManualButtonTimer.Start();
                                 break;
-                                case TimerAction.SELECT_PATCH_1:
-                                    sceneIndex = timerAction[0].EventData[0];
-                                    pmb1.Set(sceneIndex == 0);
-                                    pmb2.Set(sceneIndex == 1);
-                                    pmb3.Set(sceneIndex == 2);
-                                    pmb4.Set(sceneIndex == 3);
-                                    pmb5.Set(sceneIndex == 4);
-                                    pmb6.Set(sceneIndex == 5);
-                                    pmb7.Set(sceneIndex == 6);
-                                    pmb8.Set(sceneIndex == 7);
-                                    if (sceneIndex > 3)
-                                    {
-                                        blinking = true;
-                                    }
-                                    else
-                                    {
-                                        blinking = false;
-                                    }
+                            case TimerAction.SELECT_PATCH_1:
+                                sceneIndex = timerAction[0].EventData[0];
+                                pmb1.Set(sceneIndex == 0);
+                                pmb2.Set(sceneIndex == 1);
+                                pmb3.Set(sceneIndex == 2);
+                                pmb4.Set(sceneIndex == 3);
+                                pmb5.Set(sceneIndex == 4);
+                                pmb6.Set(sceneIndex == 5);
+                                pmb7.Set(sceneIndex == 6);
+                                pmb8.Set(sceneIndex == 7);
+                                if (sceneIndex > 3)
+                                {
+                                    blinking = true;
+                                }
+                                else
+                                {
+                                    blinking = false;
+                                }
+                                if (sceneIndex > -1)
+                                {
                                     VT4.TemporaryPatch = new Patch(VT4.UserPatch[sceneIndex]);
+                                }
 
-                                    // Turn off scene button changed blinking:
-                                    if (sceneIndex > -1)
-                                    {
-                                        sceneEdited[sceneIndex] = false;
-                                    }
-                                    UpdateGui();
+                                // Turn off scene button changed blinking:
+                                if (sceneIndex > -1)
+                                {
+                                    sceneEdited[sceneIndex] = false;
+                                }
+                                UpdateGui();
                                 break;
-                                //case TimerAction.SELECT_PATCH_1:
-                                //case TimerAction.SELECT_PATCH_2:
-                                //case TimerAction.SELECT_PATCH_3:
-                                //case TimerAction.SELECT_PATCH_4:
-                                //case TimerAction.SELECT_PATCH_5:
-                                //case TimerAction.SELECT_PATCH_6:
-                                //case TimerAction.SELECT_PATCH_7:
-                                //case TimerAction.SELECT_PATCH_8:
-                                //    int areaIndex = (int)Area.BUTTON1;
-                                //    areaIndex += timerAction[0].EventType - TimerAction.SELECT_PATCH_1;
-                                //    currentArea = (Area)areaIndex;
-                                //    PatchIndex = timerAction[0].EventData[1] - 1;
-                                //    if (timerAction[0].EventType > TimerAction.SELECT_PATCH_4)
-                                //    {
-                                //        PatchIndex += 4;
-                                //        blinking = true;
-                                //    }
-                                //    else
-                                //    {
-                                //        blinking = false;
-                                //    }
-                                //    VT4.TemporaryPatch = new Patch(VT4.UserPatch[PatchIndex]);
-                                //    //UpdatePositions();
-                                //    // HBE UpdateGui();
-                                //    break;
-                                case TimerAction.NO_MIDI_RESPONSE:
-                                    await DisplayConnectionProblem(1);
+                            case TimerAction.NO_MIDI_RESPONSE:
+                                await DisplayConnectionProblem(1);
                                 break;
                         }
                         timerAction.RemoveAt(0);
@@ -943,82 +842,108 @@ namespace VT_4
 
             if (measureRobotButtonDownTime)
             {
-                // Perform on/off action
-                VT4.TemporaryPatch.ROBOT = (byte)(VT4.TemporaryPatch.ROBOT > 0 ? 0 : 1);
-                pmbRobot.Set(VT4.TemporaryPatch.ROBOT > 0);
-                if (VT4.TemporaryPatch.ROBOT == 1)
+                if (robotButtonIsDown)
                 {
                     // Button was not released and  is on, set fast blinking on variant:
                     variantCheck = VT4.TemporaryPatch.ROBOT_VARIATION;
+                    if (VT4.TemporaryPatch.ROBOT == 0)
+                    {
+                        // Button was not released and  is off, turn it on:
+                        VT4.TemporaryPatch.ROBOT = 0x01;
+                        pmbRobot.Set(true);
+                    }
                 }
-                else if (VT4.TemporaryPatch.ROBOT == 0)
+                else
                 {
-                    // Button was not released and  is off, turn it on:
-                    VT4.TemporaryPatch.ROBOT = 0x01;
-                    pmbRobot.Set(true);
+                    // Perform on/off action
+                    VT4.TemporaryPatch.ROBOT = (byte)(VT4.TemporaryPatch.ROBOT > 0 ? 0 : 1);
+                    pmbRobot.Set(VT4.TemporaryPatch.ROBOT > 0);
                 }
                 measureRobotButtonDownTime = false;
             }
             else if (measureMegaphoneButtonDownTime)
             {
-                // Perform on/off action
-                VT4.TemporaryPatch.MEGAPHONE = (byte)(VT4.TemporaryPatch.MEGAPHONE > 0 ? 0 : 1);
-                pmbMegaphone.Set(VT4.TemporaryPatch.MEGAPHONE > 0);
-                if (VT4.TemporaryPatch.MEGAPHONE == 1)
+                if (megaphoneButtonIsDown)
                 {
                     // Button was not released and  is on, set fast blinking on variant:
                     variantCheck = VT4.TemporaryPatch.MEGAPHONE_VARIATION;
+                    if (VT4.TemporaryPatch.MEGAPHONE == 0)
+                    {
+                        // Button was not released and  is off, turn it on:
+                        VT4.TemporaryPatch.MEGAPHONE = 0x01;
+                        pmbMegaphone.Set(true);
+                    }
                 }
-                else if (VT4.TemporaryPatch.MEGAPHONE == 0)
+                else
                 {
-                    // Button was not released and  is off, turn it on:
-                    VT4.TemporaryPatch.MEGAPHONE = 0x01;
-                    pmbMegaphone.Set(true);
+                    // Perform on/off action
+                    VT4.TemporaryPatch.MEGAPHONE = (byte)(VT4.TemporaryPatch.MEGAPHONE > 0 ? 0 : 1);
+                    pmbMegaphone.Set(VT4.TemporaryPatch.MEGAPHONE > 0);
                 }
                 measureMegaphoneButtonDownTime = false;
             }
             else if (measureVocoderButtonDownTime)
             {
-                // Perform on/off action
-                VT4.TemporaryPatch.VOCODER = (byte)(VT4.TemporaryPatch.VOCODER > 0 ? 0 : 1);
-                pmbVocoder.Set(VT4.TemporaryPatch.VOCODER > 0);
-                if (VT4.TemporaryPatch.VOCODER == 1)
+                if (vocoderButtonIsDown)
                 {
                     // Button was not released and  is on, set fast blinking on variant:
                     variantCheck = VT4.TemporaryPatch.VOCODER_VARIATION;
+                    if (VT4.TemporaryPatch.VOCODER == 0)
+                    {
+                        // Button was not released and  is off, turn it on:
+                        VT4.TemporaryPatch.VOCODER = 0x01;
+                        pmbVocoder.Set(true);
+                    }
                 }
-                else if (VT4.TemporaryPatch.VOCODER == 0)
+                else
                 {
-                    // Button was not released and  is off, turn it on:
-                    VT4.TemporaryPatch.VOCODER = 0x01;
-                    pmbVocoder.Set(true);
+                    // Perform on/off action
+                    VT4.TemporaryPatch.VOCODER = (byte)(VT4.TemporaryPatch.VOCODER > 0 ? 0 : 1);
+                    pmbVocoder.Set(VT4.TemporaryPatch.VOCODER > 0);
                 }
                 measureVocoderButtonDownTime = false;
             }
             else if (measureHarmonyButtonDownTime)
             {
-                // Perform on/off action
-                VT4.TemporaryPatch.HARMONY = (byte)(VT4.TemporaryPatch.HARMONY > 0 ? 0 : 1);
-                pmbHarmony.Set(VT4.TemporaryPatch.HARMONY > 0);
-                if (VT4.TemporaryPatch.HARMONY == 1)
+                if (harmonyButtonIsDown)
                 {
                     // Button was not released and  is on, set fast blinking on variant:
                     variantCheck = VT4.TemporaryPatch.HARMONY_VARIATION;
+                    if (VT4.TemporaryPatch.HARMONY == 0)
+                    {
+                        // Button was not released and  is off, turn it on:
+                        VT4.TemporaryPatch.HARMONY = 0x01;
+                        pmbHarmony.Set(true);
+                    }
                 }
-                else if (VT4.TemporaryPatch.HARMONY == 0)
+                else
                 {
-                    // Button was not released and  is off, turn it on:
-                    VT4.TemporaryPatch.HARMONY = 0x01;
-                    pmbHarmony.Set(true);
+                    // Perform on/off action
+                    VT4.TemporaryPatch.HARMONY = (byte)(VT4.TemporaryPatch.HARMONY > 0 ? 0 : 1);
+                    pmbHarmony.Set(VT4.TemporaryPatch.HARMONY > 0);
                 }
                 measureHarmonyButtonDownTime = false;
             }
             else if (measureReverbButtonDownTime)
             {
-                // Reverb variant check is performed by pressing the bypass button.
-                // Button was not released and  is on, set fast blinking on variant:
-                variantCheck = VT4.TemporaryPatch.REVERB_VARIATION;
-                measureReverbButtonDownTime = false;
+                if (reverbButtonIsDown)
+                {
+                    // Reverb variant check is performed by pressing the bypass button.
+                    // Button was not released and  is on, set fast blinking on variant:
+                    variantCheck = VT4.TemporaryPatch.REVERB_VARIATION;
+                    measureReverbButtonDownTime = false;
+                    if (VT4.TemporaryPatch.REVERB == 0)
+                    {
+                        // Button was not released and  is off, turn it on:
+                        //VT4.TemporaryPatch.REVERB = 0x01;
+                        //pmbReverb.Set(true);
+                    }
+                }
+                else
+                {
+                    // Perform on/off action. Note that this will be the bypass!
+                    btnBypass.IsOn = !btnBypass.IsOn;
+                }
             }
             else
             {

@@ -43,14 +43,6 @@ namespace VT_4
         /// allowing to select a variation 5 - 8 rather than 1 - 4.
         /// </summary>
         public bool manualButtonIsDown = false;
-        //public bool button1IsDown = false;
-        //public bool button2IsDown = false;
-        //public bool button3IsDown = false;
-        //public bool button4IsDown = false;
-        //public bool button5IsDown = false;
-        //public bool button6IsDown = false;
-        //public bool button7IsDown = false;
-        //public bool button8IsDown = false;
         public int sceneButtonPressed = -1;
         public bool robotButtonIsDown = false;
         public bool megaphoneButtonIsDown = false;
@@ -63,10 +55,6 @@ namespace VT_4
         public bool measureVocoderButtonDownTime = false;
         public bool measureHarmonyButtonDownTime = false;
         public bool measureReverbButtonDownTime = false;
-
-
-        //public int ChangingVariationFor = -1;
-        //public int ChangingVariationNumber;
 
         // Do NOT reorder items in PendingMidiRequest!
         // They are used as Integers in some cases.
@@ -382,96 +370,12 @@ namespace VT_4
                         manualButtonIsDown = false;
                         timerAction.Add(new MidiEvents(TimerAction.SELECT_PATCH_1, new byte[] { (byte)sceneButtonPressed }));
                     }
-                    //switch (midiInBuffer[1])
-                    //{
-                    //    case 0:
-                    //        manualButtonIsDown = true;
-                    //        button1IsDown = false;
-                    //        button2IsDown = false;
-                    //        button3IsDown = false;
-                    //        button4IsDown = false;
-                    //        break;
-                    //    case 1:
-                    //        button1IsDown = true;
-                    //        button2IsDown = false;
-                    //        button3IsDown = false;
-                    //        button4IsDown = false;
-                    //        if (manualButtonIsDown)
-                    //        {
-
-                    //        }
-                    //        manualButtonIsDown = false;
-                    //        break;
-                    //    case 2:
-                    //        button1IsDown = false;
-                    //        button2IsDown = true;
-                    //        button3IsDown = false;
-                    //        button4IsDown = false;
-                    //        manualButtonIsDown = false;
-                    //        break;
-                    //    case 3:
-                    //        button1IsDown = false;
-                    //        button2IsDown = false;
-                    //        button3IsDown = true;
-                    //        button4IsDown = false;
-                    //        manualButtonIsDown = false;
-                    //        break;
-                    //    case 4:
-                    //        button1IsDown = false;
-                    //        button2IsDown = false;
-                    //        button3IsDown = false;
-                    //        button4IsDown = true;
-                    //        manualButtonIsDown = false;
-                    //        break;
-                    //    default:
-                    //        timerAction.Add(new MidiEvents(TimerAction.SELECT_PATCH_1, midiInBuffer));
-                    //        break;
-                    //}
-
-                    //if (ChangingVariationFor > -1)
-                    //{
-                    //    ChangingVariationNumber = midiInBuffer[1] - 1; // 0 - 3 for variations 1 - 4 and 4 - 7 for variations 5 - 8.
-                    //}
-                    //else if (manualButtonIsDown && ChangingVariationFor < 0 && midiInBuffer[0] == 0xc0 && midiInBuffer[1] == 0x00)
-                    //{
-                    //    manualButtonIsDown = false;
-                    //    timerAction.Add(new MidiEvents(TimerAction.SELECT_PATCH_1, midiInBuffer));
-                    //}
-                    //else if (ChangingVariationFor < 0 && midiInBuffer[0] == 0xc0 && midiInBuffer[1] == 0x00)
-                    //{
-                    //    manualButtonIsDown = true;
-                    //}
-                    //if (midiInBuffer[1] == 0x00)
-                    //{
-                    //    manualButtonIsDown = !manualButtonIsDown;
-                    //    if (manualButtonIsDown)
-                    //    {
-                    //        // Program change to temporary patch
-                    //        timerAction.Add(new MidiEvents(TimerAction.SELECT_TEMPORARY_PATCH, midiInBuffer));
-                    //    }
-                    //}
-                    //else if (midiInBuffer[1] < 0x05)
-                    //{
-                    //    if (manualButtonIsDown)
-                    //    {
-                    //        // Program change 5 - 8
-                    //        timerAction.Add(new MidiEvents(TimerAction.SELECT_PATCH_1 + midiInBuffer[1] + 3, midiInBuffer));
-                    //    }
-                    //    else
-                    //    {
-                    //        // Program change 1 - 4
-                    //        timerAction.Add(new MidiEvents(TimerAction.SELECT_PATCH_1 + midiInBuffer[1] - 1, midiInBuffer));
-                    //    }
-                    //    manualButtonIsDown = false;
-                    //}
                 }
             }
             else if (args.Message.Type == MidiMessageType.ControlChange)
             {
                 // To avoid VT-4 PB hammering, always ignore if same id and value as last message:
                 midiInBuffer = args.Message.RawData.ToArray();
-                //timerAction.Add(TimerAction.HANDLE_CC_MESSAGE);
-                //return;
                 if (midiInBuffer[1] >= 0x31 && midiInBuffer[1] <= 0x35 && midiInBuffer[2] == 0x7f)
                 {
                     switch (midiInBuffer[1])
@@ -479,45 +383,29 @@ namespace VT_4
                         case 0x31:
                             robotButtonIsDown = true;
                             measureRobotButtonDownTime = true;
-                            //if (VT4.TemporaryPatch.ROBOT == 0)
-                            {
-                                timerAction.Add(new MidiEvents(TimerAction.HANDLE_EFFECT_BUTTON_PRESS, midiInBuffer));
-                            }
+                            timerAction.Add(new MidiEvents(TimerAction.HANDLE_EFFECT_BUTTON_PRESS, midiInBuffer));
                             break;
                         case 0x32:
                             megaphoneButtonIsDown = true;
                             measureMegaphoneButtonDownTime = true;
-                            //if (VT4.TemporaryPatch.MEGAPHONE == 0)
-                            {
-                                timerAction.Add(new MidiEvents(TimerAction.HANDLE_EFFECT_BUTTON_PRESS, midiInBuffer));
-                            }
+                            timerAction.Add(new MidiEvents(TimerAction.HANDLE_EFFECT_BUTTON_PRESS, midiInBuffer));
                             break;
                         case 0x33:
                             reverbButtonIsDown = true;
                             measureReverbButtonDownTime = true;
-                            //if (VT4.TemporaryPatch.REVERB == 0)
-                            {
-                                timerAction.Add(new MidiEvents(TimerAction.HANDLE_EFFECT_BUTTON_PRESS, midiInBuffer));
-                            }
+                            timerAction.Add(new MidiEvents(TimerAction.HANDLE_EFFECT_BUTTON_PRESS, midiInBuffer));
                             break;
                         case 0x34:
                             vocoderButtonIsDown = true;
                             measureVocoderButtonDownTime = true;
-                            //if (VT4.TemporaryPatch.VOCODER == 0)
-                            {
-                                timerAction.Add(new MidiEvents(TimerAction.HANDLE_EFFECT_BUTTON_PRESS, midiInBuffer));
-                            }
+                            timerAction.Add(new MidiEvents(TimerAction.HANDLE_EFFECT_BUTTON_PRESS, midiInBuffer));
                             break;
                         case 0x35:
                             harmonyButtonIsDown = true;
                             measureHarmonyButtonDownTime = true;
-                            //if (VT4.TemporaryPatch.HARMONY == 0)
-                            {
-                                timerAction.Add(new MidiEvents(TimerAction.HANDLE_EFFECT_BUTTON_PRESS, midiInBuffer));
-                            }
+                            timerAction.Add(new MidiEvents(TimerAction.HANDLE_EFFECT_BUTTON_PRESS, midiInBuffer));
                             break;
                     }
-                    //ChangingVariationFor = midiInBuffer[1]; // 0x31 = Robot, 0x32 = Megaphone, 0x33 = Reverb, 0x34 = Vocoder, 0x35 = Haramony.
                 }
                 else if (midiInBuffer[1] != 48 && midiInBuffer[2] == 0x00)
                 {
@@ -559,12 +447,7 @@ namespace VT_4
                             }
                             break;
                     }
-                    //ChangingVariationFor = midiInBuffer[1]; // 0x31 = Robot, 0x32 = Megaphone, 0x33 = Reverb, 0x34 = Vocoder, 0x35 = Haramony.
                 }
-                //else if (midiInBuffer[1] < 0x30 && midiInBuffer[1] > 0x35 && midiInBuffer[2] == 0x00)
-                //{
-                //    timerAction.Add(new MidiEvents(TimerAction.HANDLE_VARIATION_CHANGE, new byte[] { midiInBuffer[1] }));
-                //}
                 else
                 { 
                     if (lastCC == null)
@@ -574,10 +457,8 @@ namespace VT_4
                     }
                     else if (!(lastCC[0] == midiInBuffer[0] && lastCC[1] == midiInBuffer[1] && lastCC[2] == midiInBuffer[2])
                         || midiInBuffer[1] == 49 || midiInBuffer[1] == 50 || midiInBuffer[1] == 51)
-                        //|| midiInBuffer[1] >= 46 || midiInBuffer[1] <= 83)
                     {
                         timerAction.Add(new MidiEvents(TimerAction.HANDLE_CC_MESSAGE, midiInBuffer));
-                        //ChangingVariationFor = -1;
                     }
                     lastCC[0] = midiInBuffer[0];
                     lastCC[1] = midiInBuffer[1];
@@ -588,8 +469,6 @@ namespace VT_4
             {
                 // To avoid VT-4 PB hammering, always ignore if same id and value as last message:
                 midiInBuffer = args.Message.RawData.ToArray();
-                //timerAction.Add(TimerAction.HANDLE_PB_MESSAGE);
-                //return;
                 if (lastPB == null)
                 {
                     lastPB = new byte[3];
@@ -614,71 +493,32 @@ namespace VT_4
                     settings.Save("Volume", midiInBuffer[2]);
                     VT4.TemporaryPatch.GLOBAL_LEVEL = midiInBuffer[2];
                     knobVolume.Value= midiInBuffer[2];
-                    //SetPotHandle(Area.VOLUME, midiInBuffer[2]);
                     break;
                 case (Int32)CcMessages.MIC_SENS:
                     // Mic sens is not stored in memory, but saved in settings:
                     settings.Save("Mic sens", midiInBuffer[2]);
                     knobMicSens.Value= midiInBuffer[2];
-                    //SetPotHandle(Area.MIC_SENS, midiInBuffer[2]);
                     break;
                 case (Int32)CcMessages.KEY:
                     VT4.TemporaryPatch.KEY = midiInBuffer[2];
                     knobKey.Value = midiInBuffer[2];
-                    //SetPotHandle(Area.KEY, midiInBuffer[2]);
                     break;
                 case (Int32)CcMessages.AUTO_PITCH:
                     VT4.TemporaryPatch.AUTO_PITCH = midiInBuffer[2] * 2;
                     knobAutoPitch.Value = midiInBuffer[2];
-                    //SetPotHandle(Area.AUTO_PITCH, midiInBuffer[2] * 2);
                     break;
-                //case (Int32)CcMessages.ROBOT:
-                //    if (midiInBuffer[2] > 0)
-                //    {
-                //        VT4.TemporaryPatch.ROBOT = (byte)(VT4.TemporaryPatch.ROBOT > 0 ? 0 : 1);
-                //        imgRobotOn.Visibility = VT4.TemporaryPatch.ROBOT > 0 ? Visibility.Visible : Visibility.Collapsed;
-                //    }
-                //    break;
-                //case (Int32)CcMessages.MEGAPHONE:
-                //    if (midiInBuffer[2] > 0)
-                //    {
-                //        VT4.TemporaryPatch.MEGAPHONE = (byte)(VT4.TemporaryPatch.MEGAPHONE > 0 ? 0 : 1);
-                //        imgMegaphoneOn.Visibility = VT4.TemporaryPatch.MEGAPHONE > 0 ? Visibility.Visible : Visibility.Collapsed;
-                //    }
-                //    break;
-                //case (Int32)CcMessages.VOCODER:
-                //    if (midiInBuffer[2] > 0)
-                //    {
-                //        VT4.TemporaryPatch.VOCODER = (byte)(VT4.TemporaryPatch.VOCODER > 0 ? 0 : 1);
-                //        imgVocoderOn.Visibility = VT4.TemporaryPatch.VOCODER > 0 ? Visibility.Visible : Visibility.Collapsed;
-                //    }
-                //    break;
-                //case (Int32)CcMessages.HARMONY:
-                //    if (midiInBuffer[2] > 0)
-                //    {
-                //        VT4.TemporaryPatch.HARMONY = (byte)(VT4.TemporaryPatch.HARMONY > 0 ? 0 : 1);
-                //        imgHarmonyOn.Visibility = VT4.TemporaryPatch.HARMONY > 0 ? Visibility.Visible : Visibility.Collapsed;
-                //    }
-                //    break;
-                // HBE case (int)CcMessages.ROBOT:
-                //    VT4.TemporaryPatch.ROBOT = (byte)(midiInBuffer[2] * 2);
-                //    slPitch.Value = midiInBuffer[2];
-                //    break;
                 case (Int32)CcMessages.FORMANT:
                     VT4.TemporaryPatch.FORMANT = midiInBuffer[2] * 2;
                     slFormant.Value = midiInBuffer[2];
-                    //SetSliderHandle(Area.FORMANT, midiInBuffer[2] * 2, false);
                     break;
                 case (Int32)CcMessages.BALANCE:
                     VT4.TemporaryPatch.BALANCE = midiInBuffer[2] * 2;
                     slBalance.Value = midiInBuffer[2];
-                    //SetSliderHandle(Area.BALANCE, midiInBuffer[2] * 2, false);
                     break;
                 case (Int32)CcMessages.REVERB_SLIDER:
                     VT4.TemporaryPatch.REVERB = midiInBuffer[2] * 2;
                     slReverb.Value = midiInBuffer[2];
                     pmbReverb.Set(slReverb.Value > 1);
-                    //SetSliderHandle(Area.REVERB_SLIDER, midiInBuffer[2] * 2, false);
                     break;
                 case (Int32)CcMessages.BYPASS:
                     if (midiInBuffer[2] > 0)
@@ -705,94 +545,6 @@ namespace VT_4
             }
         }
 
-        //private void LoadTemporaryPatch()
-        //{
-        //    pendingMidiRequest = PendingMidiRequest.READ_TEMPORARY_PATCH;
-        //    byte[] address = new byte[] { 0x10, 0x00, 0x00, 0x00 };
-        //    byte[] length = new byte[] { 0x00, 0x00, 0x00, 0x26 };
-        //    byte[] message = midi.SystemExclusiveRQ1Message(address, length);
-        //    midi.SendSystemExclusive(midi.PortPairs[0], message);
-        //}
-
-        //private void SavePatch(byte[] buffer)
-        //{
-        //    buffer[7] = 0x12;                       // Change from data request to data transmit
-        //    buffer[8] = 0x11;                       // Change address to User Patch address
-        //    buffer[9] = (byte)pendingMidiRequest;   // -"-
-        //    midi.CheckSum(ref buffer);              // Calculate the new checksum
-        //    midi.SendSystemExclusive(midi.PortPairs[0], buffer);
-        //}
-
-        //private void SaveTemporaryPatch(byte[] buffer)
-        //{
-        //    buffer[7] = 0x12;                       // Change from data request to data transmit
-        //    buffer[8] = 0x10;                       // Change address to Temporary Patch
-        //    buffer[9] = 0x00;                       // -"-
-        //    midi.CheckSum(ref buffer);              // Calculate the new checksum
-        //    midi.SendSystemExclusive(midi.PortPairs[0], buffer);
-        //    timerAction = TimerAction.UPDATE_GUI_FROM_PATCH;
-        //}
-
-        //private void QueryRobotVariarion(byte variation)
-        //{
-        //    pendingMidiRequest = PendingMidiRequest.READ_ROBOT_VARIATION;
-        //    byte[] address = new byte[] { 0x21, variation, 0x00, 0x00 };
-        //    byte[] length = new byte[] { 0x00, 0x00, 0x00, 0x17 };
-        //    byte[] message = midi.SystemExclusiveRQ1Message(address, length);
-        //    midi.SendSystemExclusive(midi.PortPairs[0], message);
-        //}
-
-        //private void QueryMegaphoneVariarion(byte variation)
-        //{
-        //    pendingMidiRequest = PendingMidiRequest.READ_MEGAPHONE_VARIATION;
-        //    byte[] address = new byte[] { 0x41, variation, 0x00, 0x00 };
-        //    byte[] length = new byte[] { 0x00, 0x00, 0x00, 0x1c };
-        //    byte[] message = midi.SystemExclusiveRQ1Message(address, length);
-        //    midi.SendSystemExclusive(midi.PortPairs[0], message);
-        //}
-
-        //private void QueryVocoderVariation(byte variation)
-        //{
-        //    pendingMidiRequest = PendingMidiRequest.READ_VOCODER_VARIATION;
-        //    byte[] address = new byte[] { 0x61, variation, 0x00, 0x00 };
-        //    byte[] length = new byte[] { 0x00, 0x00, 0x00, 0x1c };
-        //    byte[] message = midi.SystemExclusiveRQ1Message(address, length);
-        //    midi.SendSystemExclusive(midi.PortPairs[0], message);
-        //}
-
-        //private void QueryHarmonyVariation(byte variation)
-        //{
-        //    pendingMidiRequest = PendingMidiRequest.READ_HARMONY_VARIATION;
-        //    byte[] address = new byte[] { 0x31, variation, 0x00, 0x00 };
-        //    byte[] length = new byte[] { 0x00, 0x00, 0x00, 0x23 };
-        //    byte[] message = midi.SystemExclusiveRQ1Message(address, length);
-        //    midi.SendSystemExclusive(midi.PortPairs[0], message);
-        //}
-
-        //private void QueryReverbVariarion(byte variation)
-        //{
-        //    pendingMidiRequest = PendingMidiRequest.READ_REVERB_VARIATION;
-        //    byte[] address = new byte[] { 0x51, variation, 0x00, 0x00 };
-        //    byte[] length = new byte[] { 0x00, 0x00, 0x00, 0x1c };
-        //    byte[] message = midi.SystemExclusiveRQ1Message(address, length);
-        //    midi.SendSystemExclusive(midi.PortPairs[0], message);
-        //}
-
-        //private void QueryEqualizer()
-        //{
-        //    pendingMidiRequest = PendingMidiRequest.READ_EQUALIZER;
-        //    byte[] address = new byte[] { 0x61, 0x00, 0x00, 0x00 };
-        //    byte[] length = new byte[] { 0x00, 0x00, 0x00, 0x20 };
-        //    byte[] message = midi.SystemExclusiveRQ1Message(address, length);
-        //    midi.SendSystemExclusive(midi.PortPairs[0], message);
-        //}
-
-        //private Boolean WaitForMidiRequestAnswered()
-        //{
-        //    WaitForMidiRequestAnsweredAsync();
-        //    return pendingMidiRequest == PendingMidiRequest.DONE;
-        //}
-
         private async Task WaitForMidiRequestAnswered()
         {
             Int32 counter = 2000;
@@ -809,14 +561,6 @@ namespace VT_4
 
     public class MidiEvents
     {
-        //public enum EventTypes
-        //{
-        //    SYSEX,
-        //    CC,
-        //    PB,
-        //    PC,
-        //}
-
         public TimerAction EventType { get; set; }
         public byte[] EventData { get; set; }
 

@@ -32,7 +32,6 @@ namespace VT_4
         // Global variables
         /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        PointerPoint mousePoint;
         Area currentArea;
 
         List<MidiEvents> timerAction;
@@ -63,7 +62,6 @@ namespace VT_4
         public Settings settings;
         public int sceneIndex = -1;    // -1 => Manual, 0 - 7 => scene 1 - 8
         public int VariationIndex = 0;
-        //public byte sceneIndex = 0;
         public int manualBlinkCounter;
         bool manualOn;
         bool[] sceneEdited = new bool[8];

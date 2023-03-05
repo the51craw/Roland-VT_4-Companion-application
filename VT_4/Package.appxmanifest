@@ -9,7 +9,7 @@
   <Identity
     Name="34533MrMartin.RolandVT-4CompanionApplication"
     Publisher="CN=58B8F239-F020-4CC5-9BF5-DC3993969183"
-    Version="0.0.4.0" />
+    Version="0.0.6.0" />
 
   <mp:PhoneIdentity PhoneProductId="5216f66d-94d2-4cda-8dcc-be56b0b4d397" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

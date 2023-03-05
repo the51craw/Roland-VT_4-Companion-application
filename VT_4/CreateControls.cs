@@ -222,43 +222,43 @@ namespace VT_4
                 "Variant", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOff));
             vt4MenuItems[vt4MenuItems.Count - 1][0].Add(
-            pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
+                pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
                 ControlBase.PopupMenuButtonStyle.ITEM, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
                 "Variant", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOff));
             vt4MenuItems[vt4MenuItems.Count - 1][0].Add(
-            pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
+                pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
                 ControlBase.PopupMenuButtonStyle.ITEM, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
                 "Variant", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOff));
             vt4MenuItems[vt4MenuItems.Count - 1][0].Add(
-            pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
+                pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
                 ControlBase.PopupMenuButtonStyle.ITEM, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
                 "Variant", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOff));
             vt4MenuItems[vt4MenuItems.Count - 1][0].Add(
-            pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
+                pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
                 ControlBase.PopupMenuButtonStyle.ITEM, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
                 "Variant", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOff));
             vt4MenuItems[vt4MenuItems.Count - 1][0].Add(
-            pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
+                pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
                 ControlBase.PopupMenuButtonStyle.ITEM, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
                 "Variant", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOff));
             vt4MenuItems[vt4MenuItems.Count - 1][0].Add(
-            pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
+                pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
                 ControlBase.PopupMenuButtonStyle.ITEM, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
                 "Variant", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOff));
             vt4MenuItems[vt4MenuItems.Count - 1][0].Add(
-            pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
+                pmbVocoder.AddMenuItem(0, sub++, new Image[] { imgMenuBackground },
                 ControlBase.PopupMenuButtonStyle.ITEM, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
                 "Variant", fontSize, false, fontWeightNormal, textAlignmentLeft,
@@ -267,31 +267,38 @@ namespace VT_4
             sub = 0;
             vt4MenuItems[vt4MenuItems.Count - 1].Add(new List<PopupMenuButton>());
             vt4MenuItems[vt4MenuItems.Count - 1][1].Add(
-            pmbVocoder.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
+                pmbVocoder.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
+                ControlBase.PopupMenuButtonStyle.SLIDER, new ControlBase.PointerButton[]
+                { ControlBase.PointerButton.LEFT },
+                "Type", fontSize, false, fontWeightNormal, textAlignmentLeft,
+                xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOn));
+            pmbVocoder.Children[1][pmbVocoder.Children[1].Count - 1].MaxValue = 3;
+            vt4MenuItems[vt4MenuItems.Count - 1][1].Add(
+                pmbVocoder.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
                 ControlBase.PopupMenuButtonStyle.SLIDER, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
-                "Parameter", fontSize, false, fontWeightNormal, textAlignmentLeft,
+                "Parameter 1", fontSize, false, fontWeightNormal, textAlignmentLeft,
+                xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOn));
+            pmbVocoder.Children[1][pmbVocoder.Children[1].Count - 1].MaxValue = 255;
+            vt4MenuItems[vt4MenuItems.Count - 1][1].Add(
+                pmbVocoder.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
+                ControlBase.PopupMenuButtonStyle.SLIDER, new ControlBase.PointerButton[]
+                { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
+                "Parameter 2", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOn));
             pmbVocoder.Children[1][pmbVocoder.Children[1].Count - 1].MaxValue = 255;
             vt4MenuItems[vt4MenuItems.Count - 1][1].Add(
             pmbVocoder.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
                 ControlBase.PopupMenuButtonStyle.SLIDER, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
-                "Parameter", fontSize, false, fontWeightNormal, textAlignmentLeft,
+                "Parameter 3", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOn));
             pmbVocoder.Children[1][pmbVocoder.Children[1].Count - 1].MaxValue = 255;
             vt4MenuItems[vt4MenuItems.Count - 1][1].Add(
             pmbVocoder.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
                 ControlBase.PopupMenuButtonStyle.SLIDER, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
-                "Parameter", fontSize, false, fontWeightNormal, textAlignmentLeft,
-                xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOn));
-            pmbVocoder.Children[1][pmbVocoder.Children[1].Count - 1].MaxValue = 255;
-            vt4MenuItems[vt4MenuItems.Count - 1][1].Add(
-            pmbVocoder.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
-                ControlBase.PopupMenuButtonStyle.SLIDER, new ControlBase.PointerButton[]
-                { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
-                "Parameter", fontSize, false, fontWeightNormal, textAlignmentLeft,
+                "Parameter 4", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 xPos, yPos, ySpacing, menuTextColorOn, menuTextColorOn));
             pmbVocoder.Children[1][pmbVocoder.Children[1].Count - 1].MaxValue = 255;
             //vt4MenuItems[vt4MenuItems.Count - 1][1].Add(
@@ -623,6 +630,13 @@ namespace VT_4
             pmbMegaphone.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
                 ControlBase.PopupMenuButtonStyle.SLIDER, new ControlBase.PointerButton[]
                 { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
+                "Type", fontSize, false, fontWeightNormal, textAlignmentLeft,
+                0, 1, 0, menuTextColorOn, menuTextColorOn));
+            pmbMegaphone.Children[1][pmbMegaphone.Children[1].Count - 1].MaxValue = 3;
+            vt4MenuItems[vt4MenuItems.Count - 1][1].Add(
+            pmbMegaphone.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
+                ControlBase.PopupMenuButtonStyle.SLIDER, new ControlBase.PointerButton[]
+                { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
                 "Parameter", fontSize, false, fontWeightNormal, textAlignmentLeft,
                 0, 1, 0, menuTextColorOn, menuTextColorOn));
             pmbMegaphone.Children[1][pmbMegaphone.Children[1].Count - 1].MaxValue = 255;
@@ -719,6 +733,13 @@ namespace VT_4
             pmbReverb.AddMenu();
             sub = 0;
             vt4MenuItems[vt4MenuItems.Count - 1].Add(new List<PopupMenuButton>());
+            vt4MenuItems[vt4MenuItems.Count - 1][1].Add(
+            pmbReverb.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
+                ControlBase.PopupMenuButtonStyle.SLIDER, new ControlBase.PointerButton[]
+                { ControlBase.PointerButton.LEFT, ControlBase.PointerButton.RIGHT, ControlBase.PointerButton.OTHER },
+                "Type", fontSize, false, fontWeightNormal, textAlignmentLeft,
+                xPos, 1, 0, menuTextColorOn, menuTextColorOn));
+            pmbReverb.Children[1][pmbReverb.Children[1].Count - 1].MaxValue = 5;
             vt4MenuItems[vt4MenuItems.Count - 1][1].Add(
             pmbReverb.AddMenuItem(1, sub++, new Image[] { imgMenuBackground, imgMenuItemSliderHandle },
                 ControlBase.PopupMenuButtonStyle.SLIDER, new ControlBase.PointerButton[]
