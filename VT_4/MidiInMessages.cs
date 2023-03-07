@@ -482,6 +482,11 @@ namespace VT_4
                 lastPB[1] = midiInBuffer[1];
                 lastPB[2] = midiInBuffer[2];
             }
+            else if (args.Message.Type == MidiMessageType.NoteOn)
+            {
+                // Receiving note on turns Robot on, so we need to indicate that:
+                timerAction.Add(new VT_4.MidiEvents(TimerAction.TURN_ON_ROBOT, new byte[] { 0x02 }));
+            }
         }
 
         private void HandleCcMessage(byte[] midiInBuffer)

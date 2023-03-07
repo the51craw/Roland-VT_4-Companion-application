@@ -141,7 +141,7 @@ namespace VT_4
             pmbVocoder.Set(VT4.TemporaryPatch.VOCODER > 0);
             pmbMegaphone.Set(VT4.TemporaryPatch.MEGAPHONE > 0);
 
-            knobVolume.Value = VT4.TemporaryPatch.GLOBAL_LEVEL;
+            knobVolume.Value = VT4.TemporaryPatch.GLOBAL_LEVEL / 2;
             knobAutoPitch.Value = VT4.TemporaryPatch.AUTO_PITCH / 2;
 
             if (settings.LocalSettings.Values["Mic sens"] != null)
@@ -156,7 +156,7 @@ namespace VT_4
 
             slPitch.Value = VT4.TemporaryPatch.PITCH / 2;
             slFormant.Value = VT4.TemporaryPatch.FORMANT / 2;
-            slBalance.Value = VT4.TemporaryPatch.BALANCE / 2;
+            slBalance.Value = VT4.TemporaryPatch.BALANCE / 2 ;
             slReverb.Value = VT4.TemporaryPatch.REVERB / 2;
             pmbReverb.Set(VT4.TemporaryPatch.REVERB > 0);
 

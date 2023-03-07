@@ -44,6 +44,7 @@ namespace VT_4
             SELECT_PATCH_7,
             SELECT_PATCH_8,
             SELECT_TEMPORARY_PATCH,
+            TURN_ON_ROBOT,
             NO_MIDI_RESPONSE,
         }
 
@@ -75,6 +76,7 @@ namespace VT_4
             SendProgramChange(1);
             sceneIndex = 0;
 
+            midi.SendControlChange(midi.PortPairs[0], 51, 0);
             ReadVt4();
             byte channel = (byte)(VT4.System.MIDI_CH); 
             channel = (byte)(channel > 0 ? channel - 1 : 0);   // Minus one because 0 is OFF, which we disregard.
@@ -91,8 +93,9 @@ namespace VT_4
             SetParameterTexts(0x0b);
             SetParameterTexts(0x0c);
 
-            midi.SendControlChange(midi.PortPairs[0], 51, 0);
-
+            //midi.SendControlChange(midi.PortPairs[0], 51, 0);
+            sceneIndex = 0;
+            sceneEdited[sceneIndex] = true;
 
             // Megaphone sometimes has only three parameters. When calling
             // SetParameterTexts(0x0b) the extra one might be set to visible,
@@ -194,6 +197,10 @@ namespace VT_4
             VT4.UserRobot[7].NAME_04_07 = 1180983915;
             VT4.UserRobot[7].Name = "FB&Res  ";
 
+            // Knobs and sliders are not reported when
+            // reading the VT4, so we give them standard
+            // values and update the VT4:
+            SetKnobsAndSliders();
             SendVolume();
             SendMicSens();
 
@@ -315,6 +322,41 @@ namespace VT_4
                     }
                 }
             }
+        }
+
+        public void SetKnobsAndSliders()
+        {
+            //// Volume
+            //VT4.TemporaryPatch.GLOBAL_LEVEL = 0x80;
+            //midi.SendControlChange(midi.PortPairs[0], 46, 0x80);
+            //((Knob)knobVolume).Value = 0x80;
+            //// Mic sens (not stored in VT4):
+            //midi.SendControlChange(midi.PortPairs[0], 47, 0x80);
+            //((Knob)knobMicSens).Value = 0x80;
+            //// Key
+            //VT4.TemporaryPatch.KEY = 0;
+            //midi.SendControlChange(midi.PortPairs[0], 48, 0);
+            //((Knob)knobKey).Value = 0;
+            //// Auto pitch
+            VT4.TemporaryPatch.AUTO_PITCH = 0;
+            midi.SendControlChange(midi.PortPairs[0], 55, 0);
+            ((Knob)knobAutoPitch).Value = 0;
+            // Pitch
+            VT4.TemporaryPatch.PITCH = 0x80;
+            midi.SendPitchBender(midi.PortPairs[0], 0x40);
+            ((VerticalSlider)slPitch).Value = 0x40;
+            // Formant
+            VT4.TemporaryPatch.FORMANT = 0x80;
+            midi.SendControlChange(midi.PortPairs[0], 48, 0x40);
+            ((VerticalSlider)slFormant).Value = 0x40;
+            // Balance
+            VT4.TemporaryPatch.BALANCE = 0xff;
+            midi.SendControlChange(midi.PortPairs[0], 48, 0x7f);
+            ((VerticalSlider)slBalance).Value = 0x7f;
+            // Reverb
+            VT4.TemporaryPatch.REVERB = 0x00;
+            midi.SendControlChange(midi.PortPairs[0], 48, 0);
+            ((VerticalSlider)slReverb).Value = 0;
         }
 
         public void SendVolume()
@@ -739,6 +781,10 @@ namespace VT_4
                                 break;
                             case TimerAction.NO_MIDI_RESPONSE:
                                 await DisplayConnectionProblem(1);
+                                break;
+                            case TimerAction.TURN_ON_ROBOT:
+                                pmbRobot.Set(true);
+                                VT4.TemporaryPatch.ROBOT = 2; // 0 = off, 1 = on, 2 = on and MIDI in
                                 break;
                         }
                         timerAction.RemoveAt(0);
